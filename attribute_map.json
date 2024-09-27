@@ -1,0 +1,184 @@
+{
+    "1": {
+        "name": "Status of existing checking account",
+        "type": "categorical",
+        "categories": [
+            "negative_balance",
+            "small_balance",
+            "large_balance",
+            "no_account"
+        ],
+        "identifier": "status_checking_account"
+    },
+    "2": {
+        "name": "Duration in month",
+        "type": "numerical",
+        "identifier": "duration_month"
+    },
+    "3": {
+        "name": "Credit history",
+        "type": "categorical",
+        "categories": [
+            "no_credits",
+            "all_credits_paid",
+            "existing_credits_paid",
+            "delayed_payment",
+            "critical_account"
+        ],
+        "identifier": "credit_history"
+    },
+    "4": {
+        "name": "Purpose",
+        "type": "categorical",
+        "categories": [
+            "new_car",
+            "used_car",
+            "furniture",
+            "electronics",
+            "appliances",
+            "repairs",
+            "education",
+            "vacation",
+            "retraining",
+            "business",
+            "others"
+        ],
+        "identifier": "purpose"
+    },
+    "5": {
+        "name": "Credit amount",
+        "type": "numerical",
+        "identifier": "credit_amount"
+    },
+    "6": {
+        "name": "Savings account/bonds",
+        "type": "categorical",
+        "categories": [
+            "low_savings",
+            "medium_savings",
+            "high_savings",
+            "very_high_savings",
+            "no_savings"
+        ],
+        "identifier": "savings_account_bonds"
+    },
+    "7": {
+        "name": "Present employment since",
+        "type": "categorical",
+        "categories": [
+            "unemployed",
+            "less_than_1_year",
+            "1_to_4_years",
+            "4_to_7_years",
+            "more_than_7_years"
+        ],
+        "identifier": "employment_duration"
+    },
+    "8": {
+        "name": "Installment rate in percentage of disposable income",
+        "type": "numerical",
+        "identifier": "installment_rate"
+    },
+    "9": {
+        "name": "Personal status and sex",
+        "type": "categorical",
+        "categories": [
+            "male_divorced",
+            "female_divorced",
+            "male_single",
+            "male_married",
+            "female_single"
+        ],
+        "identifier": "personal_status_sex"
+    },
+    "10": {
+        "name": "Other debtors / guarantors",
+        "type": "categorical",
+        "categories": [
+            "none",
+            "co_applicant",
+            "guarantor"
+        ],
+        "identifier": "other_debtors_guarantors"
+    },
+    "11": {
+        "name": "Present residence since",
+        "type": "numerical",
+        "identifier": "residence_duration"
+    },
+    "12": {
+        "name": "Property",
+        "type": "categorical",
+        "categories": [
+            "real_estate",
+            "savings_agreement",
+            "car_or_other",
+            "no_property"
+        ],
+        "identifier": "property"
+    },
+    "13": {
+        "name": "Age in years",
+        "type": "numerical",
+        "identifier": "age_years"
+    },
+    "14": {
+        "name": "Other installment plans",
+        "type": "categorical",
+        "categories": [
+            "bank",
+            "stores",
+            "none"
+        ],
+        "identifier": "other_installment_plans"
+    },
+    "15": {
+        "name": "Housing",
+        "type": "categorical",
+        "categories": [
+            "rent",
+            "own",
+            "for_free"
+        ],
+        "identifier": "housing"
+    },
+    "16": {
+        "name": "Number of existing credits at this bank",
+        "type": "numerical",
+        "identifier": "existing_credits"
+    },
+    "17": {
+        "name": "Job",
+        "type": "categorical",
+        "categories": [
+            "unemployed",
+            "unskilled_resident",
+            "skilled_employee",
+            "management"
+        ],
+        "identifier": "job"
+    },
+    "18": {
+        "name": "Number of people being liable to provide maintenance for",
+        "type": "numerical",
+        "identifier": "maintenance_people"
+    },
+    "19": {
+        "name": "Telephone",
+        "type": "categorical",
+        "categories": [
+            "none",
+            "yes_registered"
+        ],
+        "identifier": "telephone"
+    },
+    "20": {
+        "name": "foreign worker",
+        "type": "categorical",
+        "categories": [
+            "yes",
+            "no"
+        ],
+        "identifier": "foreign_worker"
+    }
+}
