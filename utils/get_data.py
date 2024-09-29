@@ -1,6 +1,5 @@
-from ucimlrepo import fetch_ucirepo
-import json
 import os
+from ucimlrepo import fetch_ucirepo
 import pandas as pd
 
 # changing from codes to their actual meaning
@@ -416,9 +415,9 @@ def main():
         X, y = fetch_data()
         X = clean_data(X)
         X = map_data(X, ATTRIBUTE_MAP)
-        y = y.rename(columns={'class': 'credit_risk'})
-        y['credit_risk'] = y['credit_risk'].map({1: 'yes', 2: 'no'})
-        X['credit_risk'] = y['credit_risk']
+        y = y.rename(columns={'class': 'loan_approval'})
+        y['loan_approval'] = y['loan_approval'].map({1: 'yes', 2: 'no'})
+        X['loan_approval'] = y['loan_approval']
         X.to_csv('data/features.csv', index=False)
 
     X = pd.read_csv("data/features.csv")
