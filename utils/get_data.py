@@ -309,6 +309,19 @@ ATTRIBUTE_MAP = {
             "A202": "no"
         },
         "identifier": "foreign_worker"
+    },
+    "21": {
+        "name": "loan approval",
+        "type": "categorical",
+        "categories": [
+            "yes",
+            "no"
+        ],
+        "mapping": {
+            "1": "yes",
+            "2": "no"
+        },
+        "identifier": "loan_approval"
     }
 }
 
@@ -398,19 +411,40 @@ def get_probability(X, col):
     return X[col].value_counts(normalize=True)
 
 def get_conditional_probability(X, col1, col2, attribute_map=ATTRIBUTE_MAP):
+    """
+    Calculates the conditional probability of col1 given col2
+    """
     # probability of col1|col2
     probabilities = X.groupby(col2)[col1].value_counts(normalize=True)
-    
+
     cats1 = attribute_map[IDENTIFIER_2_NUM[col1]]['categories']
     cats2 = attribute_map[IDENTIFIER_2_NUM[col2]]['categories']
-    
+
     # sort by cats1
     probabilities = probabilities.reindex(pd.MultiIndex.from_product([cats2, cats1], names=[col2, col1])).fillna(0)
     return probabilities
 
+def get_counts(X, queries):
+    """
+    queries is a dictionary of the form {col1: val1, col2: val2, ...}
+    """
+    mask = pd.Series([True] * len(X))
+    for col, val in queries.items():
+        mask = mask & (X[col] == val)
+    return mask.sum()
+
+def get_conditional_probability_exact(X, queries, given):
+    """
+    given is a dictionary of the form {col1: val1, col2: val2, ...}
+    queries is a dictionary of the form {col1: val1, col2: val2, ...}
+
+    returns P(queries | given)
+    """
+    count_given = get_counts(X, given)
+    count_queries = get_counts(X, {**queries, **given})
+    return count_queries / count_given
 
 def main():
-    import pprint
     if not os.path.exists("data/features.csv"):
         X, y = fetch_data()
         X = clean_data(X)
@@ -423,11 +457,12 @@ def main():
     X = pd.read_csv("data/features.csv")
 
 
-    x = get_conditional_probability(X, "credit_history", "age_years")
+    x = get_conditional_probability(X, 'status_checking_account', 'loan_approval')
     print(x)
     print(type(x))
-    for condition, prob in x.items():
-        print(f"Condition: {condition}, Probability: {prob}")
+
+    c_1 = get_counts(X, {"loan_duration": "medium_term", "loan_amount": "very_high_credit", "employment_duration": "less_than_1_year"})
+    print(c_1)
 
 
 if __name__ == '__main__':
