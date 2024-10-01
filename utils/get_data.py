@@ -441,6 +441,8 @@ def get_conditional_probability_exact(X, queries, given):
     returns P(queries | given)
     """
     count_given = get_counts(X, given)
+    if count_given == 0:
+        return 0
     count_queries = get_counts(X, {**queries, **given})
     return count_queries / count_given
 
